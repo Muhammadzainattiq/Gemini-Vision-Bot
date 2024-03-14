@@ -62,6 +62,11 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+created_style = """
+    color: #888888; /* Light gray color */
+    font-size: 99px; /* Increased font size */
+""" 
+st.markdown("<p style='{}'>➡️created by 'Muhammad Zain Attiq'</p>".format(created_style), unsafe_allow_html=True)
 st.markdown('<h1 class="header">Talk With Images</h1>', unsafe_allow_html=True)
 input_text = st.text_input("Input Prompt", key='input')
 

@@ -26,7 +26,7 @@ def upload_picture():
 def use_sample_picture():
     sample_option = st.selectbox('Select a sample picture:', ['Dog', 'Sample 2', 'Sample 3'])
     sample_images = {
-        'Dog': 'https://github.com/Muhammadzainattiq/Gemini-Vision-Bot/blob/main/dog.jpeg',
+        'Dog': './dog.jpeg',
         'Sample 2': 'E:/Gemini ChatBot/auditorium.png',
         'Sample 3': 'E:/Gemini ChatBot/jungle.png'
     }

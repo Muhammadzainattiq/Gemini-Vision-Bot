@@ -24,11 +24,11 @@ def upload_picture():
 
 # Function to display the sample picture options
 def use_sample_picture():
-    sample_option = st.selectbox('Select a sample picture:', ['Dog', 'Sample 2', 'Sample 3'])
+    sample_option = st.selectbox('Select a sample picture:', ['Dog', 'Jungle', 'Auditorium'])
     sample_images = {
         'Dog': './dog.jpeg',
-        'Sample 2': 'E:/Gemini ChatBot/auditorium.png',
-        'Sample 3': 'E:/Gemini ChatBot/jungle.png'
+        'Jungle': './jungle.png',
+        'Auditorium':  './auditorium.png',
     }
     if sample_option in sample_images:
         image = Image.open(sample_images[sample_option])

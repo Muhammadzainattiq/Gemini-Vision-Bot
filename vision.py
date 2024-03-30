@@ -3,6 +3,7 @@ from PIL import Image
 import google.generativeai as genai
 
 genai.configure(api_key= st.secrets["GOOGLE_API_KEY"])
+genai.configure(api_key= st.secrets["GOOGLE_API_KEY"])
 
 def get_gemini_response(input, image):
     model = genai.GenerativeModel('gemini-pro-vision')
@@ -26,6 +27,9 @@ def upload_picture():
 def use_sample_picture():
     sample_option = st.selectbox('Select a sample picture:', ['Dog', 'Jungle', 'Auditorium'])
     sample_images = {
+        'Dog': './dog.jpeg',
+        'Jungle': './jungle.png',
+        'Auditorium':  './auditorium.png',
         'Dog': './dog.jpeg',
         'Jungle': './jungle.png',
         'Auditorium':  './auditorium.png',

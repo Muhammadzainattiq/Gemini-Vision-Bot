@@ -1,12 +1,8 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 import streamlit as st
-import os
 from PIL import Image
 import google.generativeai as genai
 
-os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key= st.secrets["GOOGLE_API_KEY"])
 
 def get_gemini_response(input, image):
     model = genai.GenerativeModel('gemini-pro-vision')
@@ -28,11 +24,11 @@ def upload_picture():
 
 # Function to display the sample picture options
 def use_sample_picture():
-    sample_option = st.selectbox('Select a sample picture:', ['Sample 1', 'Sample 2', 'Sample 3'])
+    sample_option = st.selectbox('Select a sample picture:', ['Dog', 'Jungle', 'Auditorium'])
     sample_images = {
-        'Sample 1': 'E:/Gemini ChatBot/dog.jpeg',
-        'Sample 2': 'E:/Gemini ChatBot/auditorium.png',
-        'Sample 3': 'E:/Gemini ChatBot/jungle.png'
+        'Dog': './dog.jpeg',
+        'Jungle': './jungle.png',
+        'Auditorium':  './auditorium.png',
     }
     if sample_option in sample_images:
         image = Image.open(sample_images[sample_option])
@@ -43,7 +39,7 @@ st.set_page_config(page_title="TALK WITH IMAGES", page_icon="log.png")
 st.markdown("""
     <style>
         .header {
-            font-size: 36px;
+            font-size: 56px;
             color: #1E90FF; /* Change the color as per your preference */
             text-align: center;
             margin-bottom: 30px;
@@ -66,7 +62,21 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-st.markdown('<h1 class="header">Talk With Images</h1>', unsafe_allow_html=True)
+created_style = """
+    color: #888888; /* Light gray color */
+    font-size: 99px; /* Increased font size */
+""" 
+st.markdown("<p style='{}'>➡️created by 'Muhammad Zain Attiq'</p>".format(created_style), unsafe_allow_html=True)
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    st.image('log.png', width = 145, use_column_width= 'never')
+with col2:
+    st.markdown('<h1 class="header">Talk </h1>', unsafe_allow_html=True)
+with col3:
+    st.markdown('<h1 class="header">With </h1>', unsafe_allow_html=True)
+with col4: 
+    st.markdown('<h1 class="header">Images</h1>', unsafe_allow_html=True)
+
 input_text = st.text_input("Input Prompt", key='input')
 
 choice = st.radio("Choose an option:", ("Upload Picture", "Use Sample Picture"))
